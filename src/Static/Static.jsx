@@ -53,7 +53,7 @@ const SiteContainer = () => {
 		<div className="site-grid" id="top">
 			<SideBar />
 			<MobileHeader />
-			<ProjectsContainer />
+			<ProjectsCardsContainer />
 			<SiteFooter />					
 		</div>
 	);
@@ -63,7 +63,9 @@ const SideBar = () => {
 	return (
 		<header>
 			<div className="sidebar-content">
-				<SideBarLogo />
+				<SideBarLogo 
+					name={"Bryan Castleman"}
+				/>
 				<SideBarNav /> 
 				<SideBarSocial />
 			</div>	
@@ -71,19 +73,18 @@ const SideBar = () => {
 	);
 }
 
-const SideBarLogo = () => {
+const SideBarLogo = (props) => {
 	return (
-		<div className="sidebar-logo">Bryan Castleman</div>
+		<div className="sidebar-logo">
+			{props.name}
+		</div>
 	);
 }
 
 const SideBarNav = () => {
 	return (
 		<nav>
-			<ul>
-				<li className="page-title"><a href="about.html">About</a></li>
-				<li className="page-title"><a href="contact.html">Contact</a></li>
-			</ul>
+			<SideBarNavMainLinks />
 			<div className="sidebar-projects-list">
 				<h3 className="sidebar-list-title">Projects</h3>
 				<ul>
@@ -104,6 +105,15 @@ const SideBarNav = () => {
 	);
 }
 
+const SideBarNavMainLinks = () => {
+	return (
+		<ul>
+			<li className="page-title"><a href="about.html">About</a></li>
+			<li className="page-title"><a href="contact.html">Contact</a></li>
+		</ul>
+	); 
+}
+
 const SideBarSocial = () => {
 	return (
 		<div className="social-links">					
@@ -118,38 +128,96 @@ const SideBarSocial = () => {
 const MobileHeader = () => {
 	return (
 		<header className="mobile-header">
-			<div>Logo</div>
-			<a href="#"><div className="bars-click-area"><i className="fas fa-bars fa-lg"></i></div></a>
+			<MobileLogo 
+				name={"Bryan Castleman"}
+			/>
+			<OpenMobileNavIcon />
 		</header>
 	);
 }
 
-const ProjectsContainer = () => {
+const MobileLogo = (props) => {
+	return(
+		<div>{props.name}</div>
+	);
+}
+
+const OpenMobileNavIcon = () => {
+	return(
+		<a href="#"><div className="bars-click-area"><i className="fas fa-bars fa-lg"></i></div></a>
+	);
+}
+
+// ************ Projects Container ********************
+
+const ProjectsCardsContainer = () => {
 	return (
 		<div className="projects-grid">
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />					
+			<ProjectCard
+				href={"#"}
+				src={"http://via.placeholder.com/660x500"} 
+				title={"Flexbox Visualized"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"ApartmentSite"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"Squillo"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"Responsive Layouts"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"JS Calculator"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"Project"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"Project"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>
+			<ProjectCard
+				href={"#"} 
+				src={"http://via.placeholder.com/660x500"}
+				title={"Project"}
+				description={"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam."}
+			/>					
 		</div>
 	);
 }
 
-const ProjectCard = () => {
+const ProjectCard = (props) => {
 	return (
 		<div className="project-card">
-			<div><a href="https://placeholder.com"><img src="http://via.placeholder.com/660x500" /></a></div>
+			<div><a href={props.href}><img src={props.src} /></a></div>
 			<div className="project-about">
-				<h3>Project</h3>
-				<p>Project Description</p>
+				<h3>{props.title}</h3>
+				<p>{props.description}</p>
 			</div>
 		</div>
 	);
 }
+
+// ************ Site Footer ********************
 
 const SiteFooter = () => {
 	return (
