@@ -1,15 +1,66 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Static = () => {
-	return (		
-		<body>
-			<ResponsiveMenu />
-			<SiteContainer />
-		</body>		
-	);
+class Static extends Component {
+
+	state={
+
+		projects: [
+			{
+				image: 'http://via.placeholder.com/660x500',
+				title: 'Project',
+				description: 'Project Description',
+				selected: false
+			},
+			{
+				image: 'http://via.placeholder.com/660x500',
+				title: 'Project',
+				description: 'Project Description',
+				selected: false
+			},
+			{
+				image: 'http://via.placeholder.com/660x500',
+				title: 'Project',
+				description: 'Project Description',
+				selected: false
+			},
+			{
+				image: 'http://via.placeholder.com/660x500',
+				title: 'Project',
+				description: 'Project Description',
+				selected: false
+			},
+			{
+				image: 'http://via.placeholder.com/660x500',
+				title: 'Project',
+				description: 'Project Description',
+				selected: false
+			},
+			{
+				image: 'http://via.placeholder.com/660x500',
+				title: 'Project',
+				description: 'Project Description',
+				selected: false
+			}
+		]
+	}
+
+	render(){
+		const { projects } = this.state;
+		return (					
+			<div>
+				<ResponsiveMenu 
+					projects={projects}
+				/>
+				<SiteContainer 
+					projects={projects}
+				/>
+			</div>	
+		);
+	} 
 }
 
-const ResponsiveMenu = () => {
+
+const ResponsiveMenu = (props) => {
 	return(
 		<div className="responsive-menu">
 			<div className="responsive-grid">
@@ -39,16 +90,17 @@ const ResponsiveMenu = () => {
 					</div>				
 				</nav>
 				<footer className="responsive-social-links">
-					<a href="https://github.com/castlemaninc" target="_blank"><i className="fab fa-github fa-3x"></i></a>	
-					<a href="http://twitter.com/Bryan_Castleman" target="_blank"><i className="fab fa-twitter fa-3x"></i></a>
-					<a href="https://www.linkedin.com/in/bryancastleman/" target="_blank"><i className="fab fa-linkedin-in fa-3x"></i></a>					
+					<a href="https://github.com/castlemaninc" target="_blank" rel="noopener noreferrer"><i className="fab fa-github fa-3x"></i></a>	
+					<a href="http://twitter.com/Bryan_Castleman" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter fa-3x"></i></a>
+					<a href="https://www.linkedin.com/in/bryancastleman/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in fa-3x"></i></a>					
 				</footer>			
 			</div>					
 		</div>
 	);
 }
 
-const SiteContainer = () => {
+const SiteContainer = (props) => {
+	// console.log(props);
 	return (
 		<div className="site-grid" id="top">
 			<SideBar />
@@ -59,14 +111,16 @@ const SiteContainer = () => {
 	);
 }
 
-const SideBar = () => {
+const SideBar = (props) => {
 	return (
 		<header>
 			<div className="sidebar-content">
 				<SideBarLogo 
 					name={"Bryan Castleman"}
 				/>
-				<SideBarNav /> 
+				<SideBarNav 
+
+				/> 
 				<SideBarSocial />
 			</div>	
 		</header>
@@ -81,7 +135,8 @@ const SideBarLogo = (props) => {
 	);
 }
 
-const SideBarNav = () => {
+const SideBarNav = (props) => {
+	console.log(props);
 	return (
 		<nav>
 			<SideBarNavMainLinks />
@@ -117,9 +172,9 @@ const SideBarNavMainLinks = () => {
 const SideBarSocial = () => {
 	return (
 		<div className="social-links">					
-			<div><a href="https://github.com/castlemaninc" target="_blank"><i className="fab fa-github fa-lg"></i></a></div>
-			<div><a href="http://twitter.com/Bryan_Castleman" target="_blank"><i className="fab fa-twitter fa-lg"></i></a></div>
-			<div><a href="https://www.linkedin.com/in/bryancastleman" target="_blank"><i className="fab fa-linkedin-in fa-lg"></i></a></div>
+			<div><a href="https://github.com/castlemaninc" target="_blank" rel="noopener noreferrer"><i className="fab fa-github fa-lg"></i></a></div>
+			<div><a href="http://twitter.com/Bryan_Castleman" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter fa-lg"></i></a></div>
+			<div><a href="https://www.linkedin.com/in/bryancastleman" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in fa-lg"></i></a></div>
 		</div>
 	);
 }
@@ -208,7 +263,7 @@ const ProjectsCardsContainer = () => {
 const ProjectCard = (props) => {
 	return (
 		<div className="project-card">
-			<div><a href={props.href}><img src={props.src} /></a></div>
+			<div><a href={props.href}><img src={props.src} alt="" /></a></div>
 			<div className="project-about">
 				<h3>{props.title}</h3>
 				<p>{props.description}</p>
