@@ -103,7 +103,9 @@ const SiteContainer = (props) => {
 	// console.log(props);
 	return (
 		<div className="site-grid" id="top">
-			<SideBar />
+			<SideBar 
+				
+			/>
 			<MobileHeader />
 			<ProjectsCardsContainer />
 			<SiteFooter />					
